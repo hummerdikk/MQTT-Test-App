@@ -10,13 +10,25 @@
 
 @interface ViewController ()
 
+@property (strong,nonatomic) MQTTSessionManager *mqttManager;
+
+@property (weak, nonatomic) IBOutlet UIButton *ConnectButton;
+@property (weak, nonatomic) IBOutlet UIButton *DisconnectButton;
+@property (weak, nonatomic) IBOutlet UILabel *MessageLabel;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    if (!self.mqttManager) {
+        self.mqttManager = [[MQTTSessionManager alloc] init];
+        self.mqttManager.delegate = self;
+        self.mqttManager.subscriptions = [[NSMutableDictionary alloc] init];
+        [self.mqttManager.subscriptions setObject:[NSNumber numberWithInt:MQTTQosLevelAtMostOnce]
+                                           forKey:[NSString stringWithFormat:@"%@/#", @"/home"]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
