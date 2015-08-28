@@ -85,7 +85,7 @@
             self.ConnectButton.enabled = false;
             [self.mqttManager sendData:[@"joins" dataUsingEncoding:NSUTF8StringEncoding]
                              topic:[NSString stringWithFormat:@"%@/%@-%@",
-                                    self.base,
+                                    @"hello",
                                     [UIDevice currentDevice].name,
                                     self.tabBarItem.title]
                                qos:MQTTQosLevelExactlyOnce
