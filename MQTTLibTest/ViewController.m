@@ -33,19 +33,17 @@
         
         [self.mqttManager connectTo:@"fds-node1.cloudapp.net"
                                port:1883
-                                tls:FALSE
+                                tls:NO
                           keepalive:60
-                              clean:TRUE
-                               auth:FALSE
+                              clean:YES
+                               auth:NO
                                user:nil
                                pass:nil
-                          willTopic:[NSString stringWithFormat:@"%@/%@-%@",
-                                     @"will",
-                                     [UIDevice currentDevice].name,
-                                     self.tabBarItem.title]
-                               will:[@"willmsq" dataUsingEncoding:NSUTF8StringEncoding]
-                            willQos:MQTTQosLevelExactlyOnce
-                     willRetainFlag:FALSE
+                               will:NO
+                          willTopic:nil
+                            willMsg:nil
+                            willQos:MQTTQosLevelAtMostOnce
+                     willRetainFlag:NO
                        withClientId:[UIDevice currentDevice].name];
     }else{
         //else we can reconnect to the last mqtt server
@@ -84,10 +82,7 @@
             self.DisconnectButton.enabled = true;
             self.ConnectButton.enabled = false;
             [self.mqttManager sendData:[@"joins" dataUsingEncoding:NSUTF8StringEncoding]
-                             topic:[NSString stringWithFormat:@"%@/%@-%@",
-                                    @"hello",
-                                    [UIDevice currentDevice].name,
-                                    self.tabBarItem.title]
+                             topic:@"/home"
                                qos:MQTTQosLevelExactlyOnce
                             retain:FALSE];
             
@@ -111,6 +106,29 @@
     }
 }
 
-- (IBAction)conn :(id)sender)
+- (IBAction)connect:(id)sender{
+    [self.mqttManager connectToLast];
+}
+
+- (IBAction)disconnect:(id)sender{
+    [self.mqttManager sendData:[@"leaves" dataUsingEncoding:NSUTF8StringEncoding]
+                         topic:@"/home"
+                       qos:MQTTQosLevelExactlyOnce
+                    retain:FALSE];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    [self.mqttManager disconnect];
+}
+
+//Handle the incomming message
+- (void)handleMessage:(NSData *)data onTopic:(NSString *)topic retained:(BOOL)retained {
+    /*
+     * MQTTClient: process received message
+     */
+    
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *senderString = topic;
+    
+    self.MessageLabel.text = [NSString stringWithFormat:@"%@,%@",dataString,senderString];
+}
 
 @end
