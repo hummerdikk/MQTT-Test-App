@@ -28,6 +28,23 @@
         self.mqttManager.subscriptions = [[NSMutableDictionary alloc] init];
         [self.mqttManager.subscriptions setObject:[NSNumber numberWithInt:MQTTQosLevelAtMostOnce]
                                            forKey:[NSString stringWithFormat:@"%@/#", @"/home"]];
+        
+        [self.mqttManager connectTo:@"fds-node1.cloudapp.net"
+                               port:1883
+                                tls:FALSE
+                          keepalive:60
+                              clean:TRUE
+                               auth:FALSE
+                               user:nil
+                               pass:nil
+                          willTopic:[NSString stringWithFormat:@"%@/%@-%@",
+                                     @"will",
+                                     [UIDevice currentDevice].name,
+                                     self.tabBarItem.title]
+                               will:[@"willmsq" dataUsingEncoding:NSUTF8StringEncoding]
+                            willQos:MQTTQosLevelExactlyOnce
+                     willRetainFlag:FALSE
+                       withClientId:[UIDevice currentDevice].name];
     }
 }
 
