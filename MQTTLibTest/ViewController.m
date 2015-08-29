@@ -66,18 +66,21 @@
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
     switch (self.mqttManager.state) {
-        case MQTTSessionManagerStateClosed:
+        case MQTTSessionManagerStateClosed: {
             self.MessageLabel.text = @"closed";
             self.DisconnectButton.enabled = false;
             self.ConnectButton.enabled = false;
             break;
-        case MQTTSessionManagerStateClosing:
+        }
+        case MQTTSessionManagerStateClosing: {
             self.MessageLabel.text = @"closing";
             self.DisconnectButton.enabled = false;
             self.ConnectButton.enabled = false;
             break;
-        case MQTTSessionManagerStateConnected:
+        }
+        case MQTTSessionManagerStateConnected: {
             self.MessageLabel.text = [NSString stringWithFormat:@"connected as %@-%@",
                                 [UIDevice currentDevice].name,
                                 self.tabBarItem.title];
@@ -89,22 +92,26 @@
                             retain:FALSE];
             
             break;
-        case MQTTSessionManagerStateConnecting:
+        }
+        case MQTTSessionManagerStateConnecting: {
             self.MessageLabel.text = @"connecting";
             self.DisconnectButton.enabled = false;
             self.ConnectButton.enabled = false;
             break;
-        case MQTTSessionManagerStateError:
+        }
+        case MQTTSessionManagerStateError: {
             self.MessageLabel.text = @"error";
             self.DisconnectButton.enabled = false;
             self.ConnectButton.enabled = false;
             break;
+        }
         case MQTTSessionManagerStateStarting:
-        default:
+        default: {
             self.MessageLabel.text = @"not connected";
             self.DisconnectButton.enabled = false;
             self.ConnectButton.enabled = true;
             break;
+        }
     }
 }
 
@@ -113,6 +120,7 @@
 }
 
 - (IBAction)disconnect:(id)sender{
+    
     [self.mqttManager sendData:[@"leaves" dataUsingEncoding:NSUTF8StringEncoding]
                          topic:@"/home"
                        qos:MQTTQosLevelExactlyOnce
