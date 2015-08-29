@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Helper.h"
 
 @interface ViewController ()
 
@@ -23,13 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //If we are starting the mqtt first, let's do some setup
-    if (!self.mqttManager) {
+    // If we are starting the mqtt first, let's do some setup
+    if (self.mqttManager == nil) {
+        
         self.mqttManager = [[MQTTSessionManager alloc] init];
         self.mqttManager.delegate = self;
         self.mqttManager.subscriptions = [[NSMutableDictionary alloc] init];
-        [self.mqttManager.subscriptions setObject:[NSNumber numberWithInt:MQTTQosLevelAtMostOnce]
-                                           forKey:[NSString stringWithFormat:@"%@/#", @"/home"]];
+        
+        self.mqttManager.subscriptions[kHomePathStr] = @(MQTTQosLevelAtMostOnce);
         
         [self.mqttManager connectTo:@"fds-node1.cloudapp.net"
                                port:1883
@@ -45,7 +47,7 @@
                             willQos:MQTTQosLevelAtMostOnce
                      willRetainFlag:NO
                        withClientId:[UIDevice currentDevice].name];
-    }else{
+    } else {
         //else we can reconnect to the last mqtt server
         [self.mqttManager connectToLast];
     }

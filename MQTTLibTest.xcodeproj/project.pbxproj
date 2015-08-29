@@ -14,6 +14,7 @@
 		1A95FC171B8DB8910095D90B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FC161B8DB8910095D90B /* Images.xcassets */; };
 		1A95FC1A1B8DB8910095D90B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A95FC181B8DB8910095D90B /* LaunchScreen.xib */; };
 		1A95FC261B8DB8910095D90B /* MQTTLibTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95FC251B8DB8910095D90B /* MQTTLibTestTests.m */; };
+		C36161F61B91A22300BBAD10 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C36161F51B91A22300BBAD10 /* Helper.m */; };
 		C9818B1011D3DF4B1156FD39 /* libPods-MQTTLibTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7052315B833B0CFACEC423 /* libPods-MQTTLibTestTests.a */; };
 		D1F372C84E51B9002FB4E1CA /* libPods-MQTTLibTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D05CAEAA6511F76B16649AFB /* libPods-MQTTLibTest.a */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,8 @@
 		4A23E7C63F0A04050AA66BDE /* Pods-MQTTLibTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTLibTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTLibTestTests/Pods-MQTTLibTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B7052315B833B0CFACEC423 /* libPods-MQTTLibTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MQTTLibTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		936B574095B201FA0F0F7F0C /* Pods-MQTTLibTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTLibTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTLibTest/Pods-MQTTLibTest.debug.xcconfig"; sourceTree = "<group>"; };
+		C36161F41B91A22300BBAD10 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		C36161F51B91A22300BBAD10 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		D05CAEAA6511F76B16649AFB /* libPods-MQTTLibTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MQTTLibTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96EED1AB5F2B6F781F74543 /* Pods-MQTTLibTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTLibTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTLibTest/Pods-MQTTLibTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +98,7 @@
 			children = (
 				1A95FC0D1B8DB8910095D90B /* AppDelegate.h */,
 				1A95FC0E1B8DB8910095D90B /* AppDelegate.m */,
+				C36161F71B91A56C00BBAD10 /* Utils */,
 				1A95FC101B8DB8910095D90B /* ViewController.h */,
 				1A95FC111B8DB8910095D90B /* ViewController.m */,
 				1A95FC131B8DB8910095D90B /* Main.storyboard */,
@@ -140,6 +144,15 @@
 				3608DA5FE15ECE1EE2F30133 /* Pods-MQTTLibTestTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C36161F71B91A56C00BBAD10 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C36161F41B91A22300BBAD10 /* Helper.h */,
+				C36161F51B91A22300BBAD10 /* Helper.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		E6E4E285F3EC4AFEE93734CB /* Frameworks */ = {
@@ -321,6 +334,7 @@
 				1A95FC121B8DB8910095D90B /* ViewController.m in Sources */,
 				1A95FC0F1B8DB8910095D90B /* AppDelegate.m in Sources */,
 				1A95FC0C1B8DB8910095D90B /* main.m in Sources */,
+				C36161F61B91A22300BBAD10 /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
