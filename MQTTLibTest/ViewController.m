@@ -127,7 +127,11 @@
                          topic:@"/home"
                            qos:MQTTQosLevelExactlyOnce
                         retain:FALSE];
+    
+    // this one looks like a very VERRRY dirty hack, ... and bad practice!
+    // Tibi pls protect your idea here! IMPROTANT
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    
     [self.mqttManager disconnect];
 }
 
