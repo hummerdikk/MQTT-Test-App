@@ -72,46 +72,46 @@
     switch (self.mqttManager.state) {
         case MQTTSessionManagerStateClosed: {
             self.MessageLabel.text = @"closed";
-            self.DisconnectButton.enabled = false;
-            self.ConnectButton.enabled = false;
+            self.DisconnectButton.enabled = NO;
+            self.ConnectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateClosing: {
             self.MessageLabel.text = @"closing";
-            self.DisconnectButton.enabled = false;
-            self.ConnectButton.enabled = false;
+            self.DisconnectButton.enabled = NO;
+            self.ConnectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateConnected: {
             self.MessageLabel.text = [NSString stringWithFormat:@"connected as %@-%@",
                                 [UIDevice currentDevice].name,
                                 self.tabBarItem.title];
-            self.DisconnectButton.enabled = true;
-            self.ConnectButton.enabled = false;
+            self.DisconnectButton.enabled = YES;
+            self.ConnectButton.enabled = NO;
             [self.mqttManager sendData:[@"joins" dataUsingEncoding:NSUTF8StringEncoding]
                              topic:@"/home"
                                qos:MQTTQosLevelExactlyOnce
-                            retain:FALSE];
+                            retain:NO];
             
             break;
         }
         case MQTTSessionManagerStateConnecting: {
             self.MessageLabel.text = @"connecting";
-            self.DisconnectButton.enabled = false;
-            self.ConnectButton.enabled = false;
+            self.DisconnectButton.enabled = NO;
+            self.ConnectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateError: {
             self.MessageLabel.text = @"error";
-            self.DisconnectButton.enabled = false;
-            self.ConnectButton.enabled = false;
+            self.DisconnectButton.enabled = NO;
+            self.ConnectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateStarting:
         default: {
             self.MessageLabel.text = @"not connected";
-            self.DisconnectButton.enabled = false;
-            self.ConnectButton.enabled = true;
+            self.DisconnectButton.enabled = NO;
+            self.ConnectButton.enabled = YES;
             break;
         }
     }
@@ -128,7 +128,7 @@
     [self.mqttManager sendData:sendData
                          topic:@"/home"
                            qos:MQTTQosLevelExactlyOnce
-                        retain:FALSE];
+                        retain:NO];
     
     // this one looks like a very VERRRY dirty hack, ... and bad practice!
     // Tibi pls protect your idea here! IMPROTANT
