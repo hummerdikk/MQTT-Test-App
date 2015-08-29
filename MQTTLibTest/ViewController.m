@@ -121,10 +121,12 @@
 
 - (IBAction)disconnect:(id)sender{
     
-    [self.mqttManager sendData:[@"leaves" dataUsingEncoding:NSUTF8StringEncoding]
+    
+    NSData * sendData = [@"leaves" dataUsingEncoding:NSUTF8StringEncoding];
+    [self.mqttManager sendData:sendData
                          topic:@"/home"
-                       qos:MQTTQosLevelExactlyOnce
-                    retain:FALSE];
+                           qos:MQTTQosLevelExactlyOnce
+                        retain:FALSE];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
     [self.mqttManager disconnect];
 }
