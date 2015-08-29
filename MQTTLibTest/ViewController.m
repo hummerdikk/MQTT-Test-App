@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 #import "Helper.h"
+#import <MQTTClient/MQTTClient.h>
+#import <MQTTClient/MQTTSessionManager.h>
 
-@interface ViewController ()
+@interface ViewController ()<MQTTSessionManagerDelegate>
 
 @property (strong,nonatomic) MQTTSessionManager *mqttManager;
 
@@ -134,6 +136,8 @@
     
     [self.mqttManager disconnect];
 }
+
+#pragma mark - MQTTSessionManagerDelegate
 
 //Handle the incomming message
 - (void)handleMessage:(NSData *)data onTopic:(NSString *)topic retained:(BOOL)retained {

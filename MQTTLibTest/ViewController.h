@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MQTTClient/MQTTClient.h>
-#import <MQTTClient/MQTTSessionManager.h>
 
-@interface ViewController : UIViewController<MQTTSessionManagerDelegate>
+
+@interface ViewController : UIViewController
 
 
 @end
