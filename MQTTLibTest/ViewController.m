@@ -130,11 +130,10 @@
                            qos:MQTTQosLevelExactlyOnce
                         retain:NO];
     
-    // this one looks like a very VERRRY dirty hack, ... and bad practice!
-    // Tibi pls protect your idea here! IMPROTANT
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mqttManager disconnect];
+    });
     
-    [self.mqttManager disconnect];
 }
 
 #pragma mark - MQTTSessionManagerDelegate
