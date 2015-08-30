@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,23 +14,23 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MQTT Test App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDX-jk-c64">
-                                <rect key="frame" x="240" y="28" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MQTT Test App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDX-jk-c64">
+                                <rect key="frame" x="127" y="28" width="120" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MqttMessage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htP-fn-Nsl">
-                                <rect key="frame" x="16" y="207" width="568" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MqttMessage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htP-fn-Nsl">
+                                <rect key="frame" x="16" y="206" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFp-yG-b55">
-                                <rect key="frame" x="271" y="76" width="59" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFp-yG-b55">
+                                <rect key="frame" x="158" y="75" width="59" height="30"/>
                                 <state key="normal" title="Connect">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -37,8 +38,8 @@
                                     <action selector="connectButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zcu-a6-dmn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-AP-CRi">
-                                <rect key="frame" x="261" y="123" width="78" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-AP-CRi">
+                                <rect key="frame" x="148" y="122" width="78" height="30"/>
                                 <state key="normal" title="Disconnect">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -48,7 +49,35 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VDX-jk-c64" secondAttribute="centerX" id="779-J9-KRQ"/>
+                            <constraint firstItem="htP-fn-Nsl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="Gpe-xg-pA0"/>
+                            <constraint firstItem="NPh-AP-CRi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="245" id="Hqs-gh-vD4"/>
+                            <constraint firstAttribute="centerX" secondItem="YFp-yG-b55" secondAttribute="centerX" id="Ifw-hk-gez"/>
+                            <constraint firstAttribute="trailing" secondItem="htP-fn-Nsl" secondAttribute="trailing" constant="16" id="MEj-U5-GHU"/>
+                            <constraint firstItem="YFp-yG-b55" firstAttribute="top" secondItem="VDX-jk-c64" secondAttribute="bottom" constant="27" id="Q5h-az-3sz"/>
+                            <constraint firstItem="htP-fn-Nsl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="TUi-G3-D03"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NPh-AP-CRi" secondAttribute="trailing" constant="245" id="Uag-ip-hfZ"/>
+                            <constraint firstItem="YFp-yG-b55" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="255" id="Upz-3K-A9a"/>
+                            <constraint firstItem="VDX-jk-c64" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Wr2-vt-J5x"/>
+                            <constraint firstItem="htP-fn-Nsl" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="YYK-8X-VtI"/>
+                            <constraint firstItem="htP-fn-Nsl" firstAttribute="leading" secondItem="NPh-AP-CRi" secondAttribute="trailing" constant="-323" id="aW5-TN-4Qk"/>
+                            <constraint firstItem="htP-fn-Nsl" firstAttribute="top" secondItem="NPh-AP-CRi" secondAttribute="bottom" constant="54" id="apR-z7-ZvF"/>
+                            <constraint firstAttribute="centerX" secondItem="NPh-AP-CRi" secondAttribute="centerX" id="b0y-PZ-YC4"/>
+                            <constraint firstItem="NPh-AP-CRi" firstAttribute="top" secondItem="YFp-yG-b55" secondAttribute="bottom" constant="17" id="mKk-Tc-tna"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Hqs-gh-vD4"/>
+                                <exclude reference="Uag-ip-hfZ"/>
+                                <exclude reference="TUi-G3-D03"/>
+                                <exclude reference="YYK-8X-VtI"/>
+                                <exclude reference="aW5-TN-4Qk"/>
+                                <exclude reference="Upz-3K-A9a"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="connectButton" destination="YFp-yG-b55" id="dYY-dc-uJM"/>
                         <outlet property="disconnectButton" destination="NPh-AP-CRi" id="cAL-sB-Xql"/>
@@ -57,6 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="358.5" y="231.5"/>
         </scene>
     </scenes>
 </document>

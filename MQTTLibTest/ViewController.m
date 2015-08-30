@@ -117,11 +117,11 @@
     }
 }
 
-- (IBAction)connectButtonTouched:(id)sender{
+- (IBAction)connectButtonTouched:(id)sender {
     [self.mqttManager connectToLast];
 }
 
-- (IBAction)disconnectButtonTouched:(id)sender{
+- (IBAction)disconnectButtonTouched:(id)sender {
     
     
     NSData * sendData = [@"leaves" dataUsingEncoding:NSUTF8StringEncoding];
