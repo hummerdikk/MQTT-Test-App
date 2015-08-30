@@ -15,9 +15,9 @@
 
 @property (strong,nonatomic) MQTTSessionManager *mqttManager;
 
-@property (weak, nonatomic) IBOutlet UIButton *ConnectButton;
-@property (weak, nonatomic) IBOutlet UIButton *DisconnectButton;
-@property (weak, nonatomic) IBOutlet UILabel *MessageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UIButton *disconnectButton;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
 @end
 
@@ -71,23 +71,23 @@
     
     switch (self.mqttManager.state) {
         case MQTTSessionManagerStateClosed: {
-            self.MessageLabel.text = @"closed";
-            self.DisconnectButton.enabled = NO;
-            self.ConnectButton.enabled = NO;
+            self.messageLabel.text = @"closed";
+            self.disconnectButton.enabled = NO;
+            self.connectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateClosing: {
-            self.MessageLabel.text = @"closing";
-            self.DisconnectButton.enabled = NO;
-            self.ConnectButton.enabled = NO;
+            self.messageLabel.text = @"closing";
+            self.disconnectButton.enabled = NO;
+            self.connectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateConnected: {
-            self.MessageLabel.text = [NSString stringWithFormat:@"connected as %@-%@",
+            self.messageLabel.text = [NSString stringWithFormat:@"connected as %@-%@",
                                 [UIDevice currentDevice].name,
                                 self.tabBarItem.title];
-            self.DisconnectButton.enabled = YES;
-            self.ConnectButton.enabled = NO;
+            self.disconnectButton.enabled = YES;
+            self.connectButton.enabled = NO;
             [self.mqttManager sendData:[@"joins" dataUsingEncoding:NSUTF8StringEncoding]
                              topic:@"/home"
                                qos:MQTTQosLevelExactlyOnce
@@ -96,32 +96,32 @@
             break;
         }
         case MQTTSessionManagerStateConnecting: {
-            self.MessageLabel.text = @"connecting";
-            self.DisconnectButton.enabled = NO;
-            self.ConnectButton.enabled = NO;
+            self.messageLabel.text = @"connecting";
+            self.disconnectButton.enabled = NO;
+            self.connectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateError: {
-            self.MessageLabel.text = @"error";
-            self.DisconnectButton.enabled = NO;
-            self.ConnectButton.enabled = NO;
+            self.messageLabel.text = @"error";
+            self.disconnectButton.enabled = NO;
+            self.connectButton.enabled = NO;
             break;
         }
         case MQTTSessionManagerStateStarting:
         default: {
-            self.MessageLabel.text = @"not connected";
-            self.DisconnectButton.enabled = NO;
-            self.ConnectButton.enabled = YES;
+            self.messageLabel.text = @"not connected";
+            self.disconnectButton.enabled = NO;
+            self.connectButton.enabled = YES;
             break;
         }
     }
 }
 
-- (IBAction)connect:(id)sender{
+- (IBAction)connectButtonTouched:(id)sender{
     [self.mqttManager connectToLast];
 }
 
-- (IBAction)disconnect:(id)sender{
+- (IBAction)disconnectButtonTouched:(id)sender{
     
     
     NSData * sendData = [@"leaves" dataUsingEncoding:NSUTF8StringEncoding];
@@ -147,7 +147,7 @@
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSString *senderString = topic;
     
-    self.MessageLabel.text = [NSString stringWithFormat:@"%@,%@",dataString,senderString];
+    self.messageLabel.text = [NSString stringWithFormat:@"%@,%@",dataString,senderString];
 }
 
 @end

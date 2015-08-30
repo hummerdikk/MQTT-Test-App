@@ -34,7 +34,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="connect:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YmU-0N-0ee"/>
+                                    <action selector="connectButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zcu-a6-dmn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-AP-CRi">
@@ -43,16 +43,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="disconnect:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Bit-cM-m3K"/>
+                                    <action selector="disconnectButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="976-C4-TTe"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="ConnectButton" destination="YFp-yG-b55" id="hYm-oa-o1a"/>
-                        <outlet property="DisconnectButton" destination="NPh-AP-CRi" id="MdA-ep-ACM"/>
-                        <outlet property="MessageLabel" destination="htP-fn-Nsl" id="h8Y-2i-Y8x"/>
+                        <outlet property="connectButton" destination="YFp-yG-b55" id="dYY-dc-uJM"/>
+                        <outlet property="disconnectButton" destination="NPh-AP-CRi" id="cAL-sB-Xql"/>
+                        <outlet property="messageLabel" destination="htP-fn-Nsl" id="fHX-OR-yfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
